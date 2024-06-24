@@ -23,9 +23,6 @@ from amazon_transcribe.handlers import TranscriptResultStreamHandler
 from amazon_transcribe.model import TranscriptEvent
 from amazon_transcribe.exceptions import BadRequestException
 
-import requests
-import socks
-import socket
 
 from ..constants.agent_constants import (
     NAME_OF_AGENT,
@@ -48,17 +45,6 @@ from ..utils.helpers import get_voice_id
 from ..signals.campaign_signals import dequeue_contact
 # END IMPORTS
 
-# GLOBAL VARIABLES
-
-# Set the SOCKS proxy settings including username and password
-proxy_host = "185.101.105.184"
-proxy_port = 12324
-proxy_username = "14aa439fa63ae"
-proxy_password = "b35b9f9acc"
-
-# Configure SOCKS proxy for socket
-socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, proxy_host, proxy_port, True, proxy_username, proxy_password)
-socket.socket = socks.socksocket
 
 # SDKs Initialization
 openai.api_key = ''
